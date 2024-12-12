@@ -1,5 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
+using Product_Management_API.Repository;
+using Product_Management_API.Service;
 
 namespace Product_Management_API
 {
@@ -13,6 +15,9 @@ namespace Product_Management_API
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            // Register the repository and service for dependency injection
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IProductService, ProductService>();
 
             // Add services to the container.
 
