@@ -1,4 +1,6 @@
 
+using Microsoft.EntityFrameworkCore;
+
 namespace Product_Management_API
 {
     public class Program
@@ -6,6 +8,11 @@ namespace Product_Management_API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            // Configure database context
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
             // Add services to the container.
 
