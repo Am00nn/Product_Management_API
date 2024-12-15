@@ -93,6 +93,7 @@ namespace Product_Management_API
 
 
 
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -104,6 +105,7 @@ namespace Product_Management_API
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication(); //jwt check middleware
             app.UseAuthorization();
 
 
